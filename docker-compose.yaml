@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  template:
+    build: ./app
+    container_name: container_template
+    restart: on-failure
+    networks:
+      - template-network
+    secrets:
+      - template_config.yaml
+        
+secrets:
+  template_config.yaml:
+    file: ../.secrets/template_config.yaml
+
+networks:
+  template_network:
+    name: python-container_template-network
